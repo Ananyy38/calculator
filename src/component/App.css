@@ -23,12 +23,12 @@
 
 .component-app.dark .component-button {
   background-color: #555;
-  color: #eee;
+  color: #eee; /* Light text color for dark theme */
 }
 
 .component-app.dark .component-button.orange {
   background-color: #ffa500;
-  color: #333;
+  color: #333; /* Dark text color for dark orange buttons */
 }
 
 .component-display {
