@@ -13,15 +13,15 @@ export default function App() {
   const [history, setHistory] = useState([]);
 
   const handleClick = buttonName => {
-    const { total, next, operation } = calculate({ total, next, operation }, buttonName);
-    setTotal(total);
-    setNext(next);
-    setOperation(operation);
+    const result = calculate({ total, next, operation }, buttonName);
+    setTotal(result.total);
+    setNext(result.next);
+    setOperation(result.operation);
 
     let calculationString = "";
-    if (total !== null) calculationString += total;
-    if (operation !== null) calculationString += ` ${operation} `;
-    if (next !== null) calculationString += next;
+    if (result.total !== null) calculationString += result.total;
+    if (result.operation !== null) calculationString += ` ${result.operation} `;
+    if (result.next !== null) calculationString += result.next;
 
     if (calculationString.length > 0) {
       setHistory([...history, calculationString]);
