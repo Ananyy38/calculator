@@ -6,7 +6,11 @@ import "./App.css";
 import History from "./History";
 
 export default function App() {
-  // ... (rest of the code remains the same)
+  const [theme, setTheme] = useState("light");
+  const [total, setTotal] = useState(null);
+  const [next, setNext] = useState(null);
+  const [operation, setOperation] = useState(null);
+  const [history, setHistory] = useState([]);
 
   const handleClick = buttonName => {
     const result = calculate({ total, next, operation }, buttonName);
@@ -27,5 +31,24 @@ export default function App() {
     }
   };
 
-  // ... (rest of the code remains the same)
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  const clearHistory = () => {
+    setHistory([]);
+  };
+
+  return (
+    <div className={`component-app ${theme}`}>
+      <div className="theme-toggle">
+        <button onClick={toggleTheme}>
+          {theme === "light" ? "Dark Theme" : "Light Theme"}
+        </button>
+      </div>
+      <History history={history} onClearHistory={clearHistory} />
+      <Display value={next || total || "0"} />
+      <ButtonPanel clickHandler={handleClick} />
+    </div>
+  );
 }
