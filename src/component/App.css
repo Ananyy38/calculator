@@ -1,5 +1,12 @@
 /* ... existing styles ... */
 
+.component-app {
+  min-height: 100vh; /* Ensure App takes up full viewport height */
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: stretch; /* Stretch items to fill available width */
+}
+
 .component-app.dark {
   background-color: #333;
   color: #fff;
@@ -14,14 +21,19 @@
   background-color: #444;
 }
 
-.component-app.dark .component-button { /* Target buttons specifically */
-  background-color: #555; /* Darker gray background */
-  color: #eee; /* Light gray text */
+.component-app.dark .component-button {
+  background-color: #555;
+  color: #eee;
 }
 
-.component-app.dark .component-button.orange { /* Target orange buttons specifically */
-  background-color: #ffa500; /* Keep orange, but adjust if needed */
-  color: #333; /* Dark text for contrast */
+.component-app.dark .component-button.orange {
+  background-color: #ffa500;
+  color: #333;
+}
+
+.component-display {
+  /* Add styles for the display numbers here */
+  color: inherit; /* Inherit color from parent */
 }
 
 .theme-toggle {
