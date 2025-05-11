@@ -18,13 +18,11 @@ export default function App() {
     setNext(next);
     setOperation(operation);
 
-    // Construct calculation string
     let calculationString = "";
     if (total !== null) calculationString += total;
     if (operation !== null) calculationString += ` ${operation} `;
     if (next !== null) calculationString += next;
 
-    // Add to history only if a calculation was performed
     if (calculationString.length > 0) {
       setHistory([...history, calculationString]);
     }
@@ -34,6 +32,10 @@ export default function App() {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
+  const clearHistory = () => {
+    setHistory([]);
+  };
+
   return (
     <div className={`component-app ${theme}`}>
       <div className="theme-toggle">
@@ -41,7 +43,7 @@ export default function App() {
           {theme === "light" ? "Dark Theme" : "Light Theme"}
         </button>
       </div>
-      <History history={history} />
+      <History history={history} onClearHistory={clearHistory} />
       <Display value={next || total || "0"} />
       <ButtonPanel clickHandler={handleClick} />
     </div>
