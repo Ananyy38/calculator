@@ -1,20 +1,20 @@
 /* ... existing styles ... */
 
 .component-app {
-  min-height: 100vh; /* Ensure App takes up full viewport height */
+  min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Align items vertically */
-  align-items: stretch; /* Stretch items to fill available width */
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .component-app.dark {
   background-color: #333;
-  color: #fff;
+  color: #eee; /* Light text color for dark theme */
 }
 
 .component-app.dark .component-display {
   background-color: #444;
-  color: #eee; /* Lighten the display numbers */
+  color: #eee;
 }
 
 .component-app.dark .component-button-panel {
@@ -32,8 +32,15 @@
 }
 
 .component-display {
-  /* Add styles for the display numbers here */
-  color: inherit; /* Inherit color from parent */
+  padding: 20px;
+  text-align: right;
+  font-size: 2em;
+  border: 1px solid #ccc;
+  color: #333; /* Dark text color for light theme */
+}
+
+.component-button {
+  color: #333; /* Dark text color for light theme */
 }
 
 .theme-toggle {
