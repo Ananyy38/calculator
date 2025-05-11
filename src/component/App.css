@@ -1,21 +1,18 @@
-.component-app {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 100%;
-  /* Add default styles, can be overridden by theme classes */
-  background-color: white; /* Light theme default */
-  color: black;          /* Light theme default */
-}
-
-.component-app.light {
-  /* Light theme styles */
-  background-color: white;
-  color: black;
-}
+/* ... existing styles ... */
 
 .component-app.dark {
-  /* Dark theme styles */
-  background-color: black;
-  color: white;
+  background-color: #333;
+  color: #fff;
+}
+
+.component-app.dark .component-display {
+  background-color: #444;
+}
+
+.component-app.dark .component-button-panel {
+  background-color: #444;
+}
+
+.theme-toggle {
+  margin-bottom: 10px;
 }

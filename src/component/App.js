@@ -1,26 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Display from "./Display";
 import ButtonPanel from "./ButtonPanel";
 import calculate from "../logic/calculate";
 import "./App.css";
 
-export default class App extends React.Component {
-  state = {
-    total: null,
-    next: null,
-    operation: null,
+export default function App() {
+  const [theme, setTheme] = useState("light");
+  const [total, setTotal] = useState(null);
+  const [next, setNext] = useState(null);
+  const [operation, setOperation] = useState(null);
+
+  const handleClick = buttonName => {
+    const result = calculate({ total, next, operation }, buttonName);
+    setTotal(result.total);
+    setNext(result.next);
+    setOperation(result.operation);
   };
 
-  handleClick = buttonName => {
-    this.setState(calculate(this.state, buttonName));
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
-  render() {
-    return (
-      <div className="component-app">
-        <Display value={this.state.next || this.state.total || "0"} />
-        <ButtonPanel clickHandler={this.handleClick} />
+  return (
+    <div className={`component-app ${theme}`}>
+      <div className="theme-toggle">
+        <button onClick={toggleTheme}>
+          {theme === "light" ? "Dark Theme" : "Light Theme"}
+        </button>
       </div>
-    );
-  }
+      <Display value={next || total || "0"} />
+      <ButtonPanel clickHandler={handleClick} />
+    </div>
+  );
 }
