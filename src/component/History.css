@@ -1,0 +1,15 @@
+.component-history {
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 200px; /* Adjust as needed */
+}
+
+.component-history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.component-history li {
+  margin-bottom: 5px;
+}
