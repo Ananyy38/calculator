@@ -3,4 +3,19 @@
   flex-direction: column;
   flex-wrap: wrap;
   height: 100%;
+  /* Add default styles, can be overridden by theme classes */
+  background-color: white; /* Light theme default */
+  color: black;          /* Light theme default */
+}
+
+.component-app.light {
+  /* Light theme styles */
+  background-color: white;
+  color: black;
+}
+
+.component-app.dark {
+  /* Dark theme styles */
+  background-color: black;
+  color: white;
 }
