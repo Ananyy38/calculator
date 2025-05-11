@@ -13,11 +13,21 @@ export default function App() {
   const [history, setHistory] = useState([]);
 
   const handleClick = buttonName => {
-    const result = calculate({ total, next, operation }, buttonName);
-    setTotal(result.total);
-    setNext(result.next);
-    setOperation(result.operation);
-    setHistory([...history, `${result.total}`]); // Add to history
+    const { total, next, operation } = calculate({ total, next, operation }, buttonName);
+    setTotal(total);
+    setNext(next);
+    setOperation(operation);
+
+    // Construct calculation string
+    let calculationString = "";
+    if (total !== null) calculationString += total;
+    if (operation !== null) calculationString += ` ${operation} `;
+    if (next !== null) calculationString += next;
+
+    // Add to history only if a calculation was performed
+    if (calculationString.length > 0) {
+      setHistory([...history, calculationString]);
+    }
   };
 
   const toggleTheme = () => {
