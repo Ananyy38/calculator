@@ -1,9 +1,8 @@
 .component-app {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  font-family: sans-serif; /* Add a default font */
+  height: 100vh; /* Ensure the app takes up the full viewport height */
+  font-family: sans-serif;
 }
 
 .component-app.dark {
@@ -36,7 +35,7 @@
   font-size: 2em;
   border: 1px solid #ccc;
   color: #333;
-  flex-grow: 1; /* Allow display to take up available space */
+  flex-grow: 1;
 }
 
 .component-button-panel {
@@ -49,16 +48,16 @@
 }
 
 .component-button {
-  flex: 1; /* Distribute space evenly among buttons */
+  flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
-  margin: 2px; /* Add spacing between buttons */
+  margin: 2px;
   cursor: pointer;
   color: #333;
 }
 
 .component-button.wide {
-  flex: 2; /* Make wide buttons twice as wide */
+  flex: 2;
 }
 
 .component-button.orange {
@@ -68,4 +67,15 @@
 
 .theme-toggle {
   margin-bottom: 10px;
+}
+
+/* Added styles for better layout */
+.component-app > * { /* Targets all direct children of .component-app */
+  flex: 1; /* Allows each child to take up available space */
+  margin: 5px; /* Adds margin for spacing */
+}
+
+.component-history {
+  overflow-y: auto;
+  max-height: 200px;
 }
