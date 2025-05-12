@@ -14,20 +14,33 @@ export default function App() {
 
   const handleClick = buttonName => {
     const result = calculate({ total, next, operation }, buttonName);
-    setTotal(result.total);
-    setNext(result.next);
-    setOperation(result.operation);
 
+    // Merge only the keys that calculate() returned:
+    setTotal(result.total !== undefined ? result.total : total);
+    setNext(result.next !== undefined ? result.next : next);
+    setOperation(result.operation !== undefined ? result.operation : operation);
+
+    // Build a human-readable string for history
     let calculationString = "";
-    if (result.total !== null) calculationString += result.total;
-    if (result.operation !== null) calculationString += ` ${result.operation} `;
-    if (result.next !== null) calculationString += result.next;
-    if (result.total !== null && result.next === null && result.operation === null) {
-      calculationString += ` = ${result.total}`;
+    const finalTotal = result.total !== undefined ? result.total : total;
+    const finalOp =
+      result.operation !== undefined ? result.operation : operation;
+    const finalNext = result.next !== undefined ? result.next : next;
+
+    if (finalTotal !== null) calculationString += finalTotal;
+    if (finalOp !== null) calculationString += ` ${finalOp} `;
+    if (finalNext !== null) calculationString += finalNext;
+    // If an evaluation just completed, append the equals sign
+    if (
+      result.total !== undefined &&
+      (result.next === null || result.next === undefined) &&
+      (result.operation === null || result.operation === undefined)
+    ) {
+      calculationString += ` = ${finalTotal}`;
     }
 
     if (calculationString.length > 0) {
-      setHistory([...history, calculationString]);
+      setHistory(prevHist => [...prevHist, calculationString]);
     }
   };
 

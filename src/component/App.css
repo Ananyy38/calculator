@@ -1,13 +1,34 @@
+/* Container for the entire app */
 .component-app {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Ensure the app takes up the full viewport height */
+  height: 100vh;
+  /* Full viewport height */
   font-family: sans-serif;
+  background-color: #fff;
+  color: #333;
 }
 
+/* Dark theme overrides */
 .component-app.dark {
   background-color: #333;
   color: #eee;
+}
+
+/* Theme toggle button container */
+.theme-toggle {
+  margin: 10px;
+}
+
+/* Display screen styling */
+.component-display {
+  flex-grow: 1;
+  padding: 20px;
+  text-align: right;
+  font-size: 2em;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .component-app.dark .component-display {
@@ -15,8 +36,33 @@
   color: #eee;
 }
 
-.component-app.dark .component-button-panel {
-  background-color: #444;
+/* Button panel layout */
+.component-button-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.component-button-panel>div {
+  display: flex;
+}
+
+.component-button {
+  flex: 1;
+  padding: 10px;
+  margin: 2px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.component-button.wide {
+  flex: 2;
+}
+
+.component-button.orange {
+  background-color: #ffa500;
+  color: white;
 }
 
 .component-app.dark .component-button {
@@ -29,53 +75,29 @@
   color: #333;
 }
 
-.component-display {
-  padding: 20px;
-  text-align: right;
-  font-size: 2em;
-  border: 1px solid #ccc;
-  color: #333;
-  flex-grow: 1;
-}
-
-.component-button-panel {
-  display: flex;
-  flex-direction: column;
-}
-
-.component-button-panel > div {
-  display: flex;
-}
-
-.component-button {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin: 2px;
-  cursor: pointer;
-  color: #333;
-}
-
-.component-button.wide {
-  flex: 2;
-}
-
-.component-button.orange {
-  background-color: #ffa500;
-  color: white;
-}
-
-.theme-toggle {
-  margin-bottom: 10px;
-}
-
-/* Added styles for better layout */
-.component-app > * { /* Targets all direct children of .component-app */
-  flex: 1; /* Allows each child to take up available space */
-  margin: 5px; /* Adds margin for spacing */
-}
-
+/* History panel styling */
 .component-history {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
   overflow-y: auto;
   max-height: 200px;
+  background-color: transparent;
+}
+
+.component-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.component-history li {
+  margin-bottom: 5px;
+  /* Default text color in light mode */
+  color: #333;
+}
+
+/* Override history text color in dark mode */
+.component-app.dark .component-history li {
+  color: #fff;
 }
